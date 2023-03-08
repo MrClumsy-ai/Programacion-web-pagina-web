@@ -1,22 +1,59 @@
-let reaccionado = false;
-let contador = 0;
+// buscar
+$("#buscar-btn").click(function (e) {
+  if (!$("#buscar-field").val() == "") {
+    console.log("buscando...");
+    console.log($("#buscar-field").val());
+  }
+  e.preventDefault();
+});
+
+// ----------------------------REACCIONES----------------------------
+let likes = 0; // cambiar esto luego ;)
+let liked = false;
+let disliked = false;
 // like
 $(".like").click(function () {
-  if (!reaccionado) {
-    contador++;
+  // liked
+  if (!liked) {
+    // si estaba en dislike, le agregas 2
+    if (disliked) likes++;
+    liked = true;
+    disliked = false;
+    likes++;
+    console.log("liked!");
+    $(this).siblings(".dislike").css("background-color", "rgba(0, 0, 0, 0)");
     $(this).css("background-color", "var(--like-color)");
-    $(this).siblings(".contador").text(contador);
-    reaccionado = true;
   }
+  // unliked
+  else {
+    console.log("unliked!");
+    $(this).css("background-color", "rgba(0, 0, 0, 0)");
+    liked = false;
+    likes--;
+  }
+  $(this).siblings(".contador").text(likes);
 });
 // dislike
 $(".dislike").click(function () {
-  if (!reaccionado) {
-    contador--;
+  // disliked
+  if (!disliked) {
+    // si estaba en like, le quitas 2
+    if (liked) likes--;
+    disliked = true;
+    liked = false;
+    likes--;
+    console.log("disliked!");
+    $(this).siblings(".like").css("background-color", "rgba(0, 0, 0, 0)");
     $(this).css("background-color", "var(--dislike-color)");
-    $(this).siblings(".contador").text(contador);
-    reaccionado = true;
   }
+  // un-disliked
+  else {
+    console.log("un-disliked!");
+    $(this).css("background-color", "rgba(0, 0, 0, 0)");
+    disliked = false;
+    likes++;
+  }
+  $(this).siblings(".contador").text(likes);
 });
 // comentar
 let comentando = false;

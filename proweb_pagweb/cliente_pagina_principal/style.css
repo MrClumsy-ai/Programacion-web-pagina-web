@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url("big_ice.jpg");
+  background-image: url("media/big_ice.jpg");
 }
 
 .publicacion,
@@ -51,9 +51,21 @@ body {
   padding: 5px;
 }
 
+.like:hover {
+  background-color: green;
+}
+
+.dislike:hover {
+  background-color: brown;
+}
+
 .like img,
 .dislike img {
   width: 20px;
+}
+
+.dislike img {
+  transform: scaleY(-1);
 }
 
 h1 {
@@ -131,5 +143,10 @@ h1 {
 }
 
 #buscar-btn {
+  color: white;
   background-color: var(--call-to-action-color);
+}
+
+#buscar-btn:hover {
+  background-color: var(--call-to-action-hover-color);
 }
