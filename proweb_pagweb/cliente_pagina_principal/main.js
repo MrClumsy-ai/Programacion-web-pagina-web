@@ -1,8 +1,7 @@
 // buscar
 $("#buscar-btn").click(function (e) {
   if (!$("#buscar-field").val() == "") {
-    console.log("buscando...");
-    console.log($("#buscar-field").val());
+    console.log("buscando:", $("#buscar-field").val());
   }
   e.preventDefault();
 });
